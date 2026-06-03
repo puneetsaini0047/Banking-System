@@ -12,6 +12,9 @@ public:
     void searchForAccount();
     void deleteAccount();
     void viewLoanApplications();
+
+    void approveLoan();
+    void rejectLoan();
 };
 
 #endif // ADMIN_H

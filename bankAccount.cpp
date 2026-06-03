@@ -268,23 +268,39 @@ void bankAccount::transferFunds() {
 
 void bankAccount::applyForLoan() {
     double loanAmount;
+
     cout << "\n=== Apply for Loan ===\n";
     cout << "Enter Loan Amount: ";
     cin >> loanAmount;
+
     if (cin.fail() || loanAmount <= 0) {
         cout << "Invalid Amount!\n";
         cin.clear();
         cin.ignore(256, '\n');
         return;
     }
+
     cin.ignore();
 
     ofstream loanFile("loan_applications.txt", ios::app);
+
     if (loanFile.is_open()) {
-        loanFile << accountNumber << "," << accountHolderName << "," << loanAmount << endl;
+
+        loanFile << accountNumber
+                 << ","
+                 << accountHolderName
+                 << ","
+                 << loanAmount
+                 << ",PENDING"
+                 << endl;
+
         loanFile.close();
+
         cout << "Loan application submitted successfully!\n";
+
     } else {
+
         cout << "Error submitting loan application!\n";
+
     }
 }
